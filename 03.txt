@@ -1,0 +1,36 @@
+Now there are several signed commits that come after the unsigned one, as in the screenshot "unsignedCommit.png" in this folder. So, we have to rebase and select the commit we want to modify.
+
+Now, a lot of tutorials and answers to questions on the internet will say to use something like "git rebase -i HEAD~N --signoff" where "~N" is the number of commits you want to look back. 
+
+<<<<<<< HEAD
+At this point, I have five commits, the first of which is unsigned. That is the one I want to modify.
+
+The problem, however, is that if I do the suggested, I get an error. 
+
+PS C:\Users\jdwin\Documents\testRepo2> git rebase -i HEAD~5
+fatal: invalid upstream 'HEAD~5'
+
+If, however, I use "git rebase -i HEAD~4", vim pops open for me to select a commit to modify. 
+
+So, how do I get to that last commit? 
+=======
+At this point, I have five commits, the first of which is unsigned. 
+
+
+>>>>>>> 9dfd22d (Another change to 03)
+
+PS C:\Users\jdwin\Documents\testRepo2> git rebase -i --root
+
+pick be1cef9 01
+pick b750171 added file
+pick 515b5ce New content in 02, new file 03
+pick 889e6b8 Edits to 03
+pick 738630b Edits to 03, added unsignedCommit.png
+<<<<<<< HEAD
+
+And the commit we want is that very first one there. So, change "pick" to "edit". Using vim, which lets me edit in the same window interactively, I tap the INSERT key and make sure I have REPLACE selected. Type "edit" over the "pick" on that line. Then, tap the ESC key. This lets me escape the editor and type ":wq" which saves and exits this vim instance.
+
+BTW, a good resource for me was this guy: https://rushlow.dev/blog/oops-i-forgot-to-sign-my-commit-from-last-monday
+=======
+>>>>>>> 9dfd22d (Another change to 03)
+
