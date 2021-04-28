@@ -1,0 +1,40 @@
+PS C:\Users\jdwin\Documents\testRepo2> git init
+PS C:\Users\jdwin\Documents\testRepo2> git push origin testRepo2
+PS C:\Users\jdwin\Documents\testRepo2> git add -A
+PS C:\Users\jdwin\Documents\testRepo2> git commit -m '02'
+PS C:\Users\jdwin\Documents\testRepo2> git push origin master
+PS C:\Users\jdwin\Documents\testRepo2> git commit --amend
+In vim, change '02' to '01', then ESC, :wq, ENTER to save and close vim
+PS C:\Users\jdwin\Documents\testRepo2> git push origin master
+
+Now the commit message is saved as '01'. NOTE: No need to comment after the "--amend" because that is, in fact, a commit.
+
+Now we stack up some signed commits we will have to work past to get to the unsigned initial commit.
+
+Oops. Forgot to sign my latest commit. 
+
+PS C:\Users\jdwin\Documents\testRepo2> git commit --amend -s
+PS C:\Users\jdwin\Documents\testRepo2> git push --force origin master
+
+Now the most recent commit has a signature.
+
+To verify this, we can list the commits with signatures displayed.
+
+PS C:\Users\jdwin\Documents\testRepo2> git log --show-signature
+commit b750171efaa7cf6762b7d91d30d7d2aaabc50b4b (HEAD -> master, origin/master)
+Author: Joe D. Williams <jdwinfodesign@gmail.com>
+Date:   Tue Apr 27 16:42:21 2021 -0400
+
+    added file
+
+    Signed-off-by: Joe D. Williams <jdwinfodesign@gmail.com>
+
+commit be1cef973eb6e3d5348caaa8086a729b716f45b7
+Author: Joe D. Williams <jdwinfodesign@gmail.com>
+Date:   Tue Apr 27 15:14:24 2021 -0400
+
+    01
+    
+The first commit ends with the line "Signed-off-by: Joe D. Williams <jdwinfodesign@gmail.com>". The way to fix this is to rebase. 
+
+And, just for grins, I will save this file and continue in 03.
